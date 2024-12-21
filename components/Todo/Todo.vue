@@ -76,32 +76,34 @@
 			align-items: center;
 			justify-content: space-between;
 			padding: 10rpx 20rpx;
-		}
-		
-		.circle{
-			width: 48rpx;
-			height: 48rpx;
-			border: 1px solid #CCCCCC;
-			border-radius: 50%;
-		}
-		.complete{
-			text-decoration: line-through;
-		}
-		
-		.icon-box{
-			display: flex;
-			align-items: center;
-			gap: 20rpx;
-			.icon{
+			
+			.circle{
 				width: 48rpx;
 				height: 48rpx;
-				.img{
-					width: 100%;
-					height: 100%;
-					object-fit: contain;
+				border: 1px solid #CCCCCC;
+				border-radius: 50%;
+				flex-shrink: 0;
+			}
+			.complete{
+				text-decoration: line-through;
+			}
+			
+			.icon-box{
+				display: flex;
+				align-items: center;
+				gap: 20rpx;
+				.icon{
+					width: 48rpx;
+					height: 48rpx;
+					.img{
+						width: 100%;
+						height: 100%;
+						object-fit: contain;
+					}
 				}
 			}
 		}
+
 		
 	}
 </style>

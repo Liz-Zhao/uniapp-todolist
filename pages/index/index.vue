@@ -2,28 +2,30 @@
 	<view class="container">
 		<text class="title">代办</text>
 		
-		<view class="add-box">
-			<input v-model="text" placeholder="干点啥..." class="add-input" />
-			<view @click="addTodo" class="add-btn">新增</view>
-		</view>
-		
 		<view class="search-box">
 			<img :src="searchIcon" alt="" class="img" />
 			<input type="text" placeholder="搜索" class="search-input" v-model="searchText" @input="handleSearch" />
 		</view>
 		
-		<text>共计{{allTodos}}条，{{completedTodosLength}}条已办</text>
-		
-		<view class="todolist">
-			<Todo 
-			v-for="(todo, index) in filteredTodos" 
-			:key="todo.id"
-			:todo="todo"
-			@toggle="toggleTodo"
-			@delete="deleteTodo"
-			@edit="editTodo"
-			/>
+		<view class="add-box">
+			<input v-model="text" placeholder="干点啥..." class="add-input" />
+			<view @click="addTodo" class="add-btn">新增</view>
 		</view>
+		
+		<text>共计{{allTodos}}条，{{completedTodosLength}}条已办</text>
+		<scroll-view scroll-y="true" class="scroll-Y">
+			<view class="todolist">
+				<Todo 
+				v-for="(todo, index) in filteredTodos" 
+				:key="todo.id"
+				:todo="todo"
+				@toggle="toggleTodo"
+				@delete="deleteTodo"
+				@edit="editTodo"
+				/>
+			</view>
+		</scroll-view>
+		
 		
 	</view>
 	
@@ -109,7 +111,8 @@
 			align-items: center;
 			gap: 10rpx;
 			padding: 20rpx;
-			margin-bottom: 25rpx;
+			margin: 25rpx 0;
+			
 			.search-input{
 				width: 100%;
 			}
@@ -119,6 +122,9 @@
 				height: 48rpx;
 				object-fit: contain;
 			}
+		}
+		.scroll-Y{
+			height: 70vh;
 		}
 		.todolist{
 			padding: 20rpx 10rpx;
