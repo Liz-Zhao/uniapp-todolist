@@ -10,11 +10,13 @@ const app = new Vue({
 })
 app.$mount()
 // #endif
+import store from './store';  // 引入 Vuex store
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 export function createApp() {
   const app = createSSRApp(App)
+  app.use(store)
   return {
     app
   }
