@@ -25,6 +25,7 @@
 	import editIcon from '../../static/edit.svg'
 	import checkIcon from '../../static/check.svg'
 	import closeIcon from '../../static/close.svg'
+	import {mapActions,mapGetters } from 'vuex';
 	
 	export default {
 		name:"Todo",
@@ -45,19 +46,20 @@
 			};
 		},
 		methods:{
+			...mapActions(['deleteTodoAction', 'toggleTodoAction','updateTodoAction']),
 			handleSetEdit(text){
 				this.isEdit = true;
 				this.editText = text;
 			},
 			editTodo(id){
-				this.$emit('edit', {id, text:this.editText})
+				this.updateTodoAction({id, text:this.editText});
 				this.isEdit = false;
 			},
 			toggleTodo(id){
-				this.$emit('toggle', {id})
+				this.toggleTodoAction({id})
 			},
 			deleteTodo(id){
-				this.$emit('delete', {id})
+				this.deleteTodoAction({id});
 			}
 		}
 	}

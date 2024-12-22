@@ -15,13 +15,10 @@
 		<text>共计{{allTodos}}条，{{completedTodosLength}}条已办</text>
 		<scroll-view scroll-y="true" class="scroll-Y">
 			<view class="todolist">
-				<Todo 
+				<Todo
 				v-for="(todo, index) in filteredTodos" 
 				:key="todo.id"
 				:todo="todo"
-				@toggle="toggleTodo"
-				@delete="deleteTodo"
-				@edit="editTodo"
 				/>
 			</view>
 		</scroll-view>
@@ -52,21 +49,12 @@
 			...mapGetters(['allTodos','completedTodosLength','filteredTodos'])
 		},
 		methods: {
-			...mapActions(['addTodoAction', 'deleteTodoAction', 'toggleTodoAction','updateTodoAction','setSearchQueryAction']),
+			...mapActions(['addTodoAction','setSearchQueryAction']),
 			addTodo() {
 				if (this.text.trim()) {
 					this.addTodoAction({text:this.text});
 					this.text = '';
 				}
-			},
-			toggleTodo(value) {
-				this.toggleTodoAction(value);
-			},
-			deleteTodo(value) {
-				this.deleteTodoAction(value);
-			},
-			editTodo(value){
-				this.updateTodoAction(value);
 			},
 			handleSearch(){
 				this.setSearchQueryAction(this.searchText)
